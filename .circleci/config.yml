@@ -1,0 +1,34 @@
+# https://circleci.com/product/features/resource-classes/
+
+version: 2.1
+
+jobs:
+
+  build:
+
+    # working_directory: ~/code
+    machine:
+      # https://circleci.com/developer/machine/image/ubuntu-2204
+      image: ubuntu-2204:2022.10.2
+
+    resource_class: medium
+
+    steps:
+
+      - checkout
+
+      - run:
+          name: Get info
+          command: |
+            echo
+            uptime
+            echo
+            uname -a
+            echo
+            df -h
+            echo
+
+      - run:
+          name: Stop for SSH
+          command: |
+            false
